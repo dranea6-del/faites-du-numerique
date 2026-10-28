@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#000091">
 <title>Journée de l’innovation — Halle aux sucres</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232347a8'/%3E%3Cg stroke='%231b1b35' stroke-width='3.5' stroke-linejoin='round'%3E%3Cpath d='M32 10L50 20V40L32 50L14 40V20Z' fill='%23fff'/%3E%3Cpath d='M14 20L32 30V50L14 40Z' fill='%23aebde8'/%3E%3Cpath d='M50 20L32 30V50L50 40Z' fill='%23e6ecfa'/%3E%3Cpath d='M14 20L32 10L50 20L32 30Z' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E">
 <style>
 /* Crème chaud pour les surfaces, bleu institutionnel pour les titres et les actions.
    Titres et textes en serif système, menus et étiquettes en police à chasse fixe du système.
@@ -150,7 +151,7 @@ select{width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--line2)
 .lvsel button small{font-weight:normal;font-size:calc(11px*var(--fs,1));color:var(--muted)}
 .lvsel button[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
 .lvsel button[aria-pressed="true"] small{color:#e7e8ff}
-.lvsel .dotc{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;border:1px solid rgba(0,0,0,.35)}
+.lvsel .cb{vertical-align:-5px;margin-right:6px}
 .planbox{background:none;border:0;padding:0}
 .planbox svg{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 14px rgba(70,45,20,.09))}
 .sp{cursor:pointer;color:#1b1b35}
@@ -190,8 +191,11 @@ dialog::backdrop{background:rgba(43,38,34,.45)}
 .notice{background:var(--cream2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:calc(14px*var(--fs,1));margin-bottom:14px}
 .notice.warn{background:var(--warn-bg);border-color:#e3b765;color:var(--warn);font-weight:bold}
 .meter{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
-.meter .bar{height:4px;background:var(--tint);border-radius:2px;margin-top:10px;overflow:hidden}
-.meter .bar i{display:block;height:100%;background:var(--navy)}
+.meter .cubes{display:flex;flex-wrap:wrap;gap:4px;margin-top:12px}
+.meter .cu.on{animation:pop .35s ease-out}
+.meter .mh2{margin:10px 0 0;font-size:calc(13px*var(--fs,1));color:var(--muted)}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.meter .cu.on{animation:none}}
 .ent{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .ent header{display:flex;gap:8px;align-items:center}
 .ent h3{font-size:calc(20px*var(--fs,1));flex:1}
@@ -236,7 +240,7 @@ footer.credit a{color:var(--navy);display:inline-block;padding:11px 0}
   dialog{margin:auto;border-radius:20px}
   .topnav{justify-content:space-between;gap:16px;padding-left:18px;padding-right:12px}
   .topnav .brand{display:flex;align-items:center;gap:10px;flex:1;font-family:var(--mono);font-size:calc(13px*var(--fs,1));color:var(--ink)}
-  .topnav .brand i{display:inline-block;width:18px;height:3px;background:#e1000f}
+  .topnav .brand svg{flex:none}
   .topnav .when{display:block;flex:1;text-align:right;font-family:var(--mono);font-size:calc(12px*var(--fs,1));color:var(--muted);padding-right:6px}
   .topnav .grp{width:auto;grid-template-columns:repeat(4,104px)}
 }
@@ -298,6 +302,7 @@ body:not([data-page="journee"]) .top .cta,body:not([data-page="journee"]) .top .
 @media (min-width:960px){.top .banner{aspect-ratio:3.4/1;object-position:50% 38%}}
 body:not([data-page="journee"]) .top .banner{display:none}
 body.hc[data-page="journee"]::before{display:none}
+body.hc{--cstroke:#000}
 body.hc .top .banner{box-shadow:none;border:2px solid #000}
 body.hc .top .org{border:2px solid #000}
 body.hc .top h1 em{color:#00005c}
@@ -349,6 +354,8 @@ body.hc .sp.hl .bg{stroke:#000;stroke-width:6}
     <symbol id="i-cafe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5zM16 11h2a2 2 0 0 1 0 4h-2M8 3v3M12 3v3"/></g></symbol>
     <symbol id="i-micro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></g></symbol>
     <symbol id="i-entree" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h12M10 7l5 5-5 5M20 4v16"/></g></symbol>
+    <symbol id="i-cube" viewBox="0 0 32 32"><g stroke="var(--cstroke,#1b1b35)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M16 3.5L27.5 10V22L16 28.5L4.5 22V10Z" fill="#fff"/><path d="M4.5 10L16 16.5V28.5L4.5 22Z" fill="currentColor" fill-opacity=".3"/><path d="M27.5 10L16 16.5V28.5L27.5 22Z" fill="currentColor" fill-opacity=".1"/><path d="M4.5 10L16 3.5L27.5 10L16 16.5Z" fill="#fff"/><path d="M16 16.5V28.5" fill="none"/></g></symbol>
+    <symbol id="i-cube-off" viewBox="0 0 32 32"><g fill="none" stroke="#b5a88f" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="3 3"><path d="M16 3.5L27.5 10V22L16 28.5L4.5 22V10Z"/><path d="M4.5 10L16 16.5L27.5 10M16 16.5V28.5"/></g></symbol>
     <symbol id="i-sucre" viewBox="0 0 40 40"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 4L36 12L20 20L4 12Z" fill="#fff"/><path d="M4 12L20 20V37L4 29Z" fill="currentColor" fill-opacity=".24"/><path d="M36 12L20 20V37L36 29Z" fill="currentColor" fill-opacity=".42"/></g><g fill="currentColor" fill-opacity=".35"><circle cx="17" cy="11.5" r="1"/><circle cx="23.5" cy="12.5" r="1"/><circle cx="20" cy="15" r=".9"/></g></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
@@ -360,7 +367,7 @@ body.hc .sp.hl .bg{stroke:#000;stroke-width:6}
 </svg>
 
 <nav class="topnav" id="topnav" aria-label="Sections de l’application">
-  <span class="brand" aria-hidden="true"><i></i>DRANE de Lille</span>
+  <span class="brand" aria-hidden="true"><svg width="24" height="24" style="color:#2347a8"><use href="#i-cube"/></svg>DRANE de Lille</span>
   <div class="grp">
     <button type="button" id="t-journee" data-act="menu" data-tab="journee" aria-label="Accueil" aria-expanded="false" aria-controls="menu" aria-current="page">Accueil</button>
     <button type="button" id="t-plan" data-act="menu" data-tab="plan" aria-label="Plan des niveaux" aria-expanded="false" aria-controls="menu">Plan</button>
@@ -754,7 +761,7 @@ function planTile(e,n,x,y,w,h,k){
     const max=Math.max(8,Math.floor((w-20-ox)/(fs*0.6))), lines=wrap(e.nom,max).slice(0,3), top=y+10+2*r+10+fs;
     lines.forEach((l,i)=>{g+=`<text class="tx" x="${x+ox+10}" y="${top+i*(fs+3)}" font-size="${fs}" font-weight="bold" fill="${ink}">${esc(l)}</text>`;});
   }
-  if(vu) g+=`<circle cx="${x+w-16}" cy="${y+16}" r="11" fill="#1e7a3e" stroke="#ffffff" stroke-width="2"/><use href="#i-check" x="${x+w-24}" y="${y+8}" width="16" height="16" style="color:#fff"/>`;
+  if(vu) g+=`<use href="#i-cube" x="${x+w-32}" y="${y+5}" width="26" height="26" style="color:${solid?"#ffffff":n.c}"/>`;
   return g+`</g>`;
 }
 function planSVG(k){
@@ -771,14 +778,15 @@ function planSVG(k){
 }
 function renderPlan(){
   const N=DATA.niveaux;
-  $("#lvsel").innerHTML=["N1","N2","N4","N5"].map(k=>`<button data-act="lv" data-lv="${k}" aria-pressed="${k===curLevel}"><span><span class="dotc" style="background:${N[k].c}"></span>${k}</span><small>${N[k].entree?"Entrée":DATA.espaces.filter(e=>e.niveau===k).length+" espaces"}</small></button>`).join("");
+  $("#lvsel").innerHTML=["N1","N2","N4","N5"].map(k=>`<button data-act="lv" data-lv="${k}" aria-pressed="${k===curLevel}"><span><svg class="cb" width="20" height="20" aria-hidden="true" style="color:${N[k].c}"><use href="#i-cube"/></svg>${k}</span><small>${N[k].entree?"Entrée":DATA.espaces.filter(e=>e.niveau===k).length+" espaces"}</small></button>`).join("");
   const n=N[curLevel], sp=DATA.espaces.filter(e=>e.niveau===curLevel);
   $("#plan").innerHTML=planSVG(curLevel);
   $("#legend").innerHTML=
     `<div><svg width="28" height="28" style="color:#1b1b35"><use href="#i-atelier" width="28" height="28"/></svg>Stand le matin, atelier l’après-midi</div>`+
     `<div><svg width="28" height="28" style="color:#1b1b35"><use href="#i-stand" width="28" height="28"/></svg>Stand le matin uniquement</div>`+
     `<div><svg width="28" height="28" style="color:#1b1b35"><use href="#i-cafe" width="28" height="28"/></svg>Accueil café et émargement</div>`+
-    `<div><svg width="28" height="28" style="color:#1b1b35"><use href="#i-micro" width="28" height="28"/></svg>Auditorium, table ronde à 11 h</div>`;
+    `<div><svg width="28" height="28" style="color:#1b1b35"><use href="#i-micro" width="28" height="28"/></svg>Auditorium, table ronde à 11 h</div>`+
+    `<div><svg width="28" height="28" style="color:#2347a8"><use href="#i-cube" width="28" height="28"/></svg>Espace vu : un sucre collecté</div>`;
   $("#lst-t").textContent="Espaces du "+n.nom.toLowerCase();
   $("#lst").innerHTML=sp.map(e=>`<li><button data-act="open" data-id="${e.id}"><span class="lv lv-${e.niveau}">${e.niveau}</span><span class="nm">${esc(e.nom)}<span class="sub">${esc(typeTxt(e))}</span></span>${S.vu[e.id]?'<span class="vu">Vu</span>':""}</button></li>`).join("");
 }
@@ -826,7 +834,8 @@ function renderCarnet(){
   const vus=CARNET.filter(e=>S.vu[e.id]).length;
   const rest=CARNET.filter(e=>!entHas(e.id));
   let h="";
-  h+=`<div class="meter" aria-live="polite"><strong>${vus} espace${vus>1?"s":""} découvert${vus>1?"s":""} sur ${CARNET.length}</strong><div class="bar" aria-hidden="true"><i style="width:${vus/CARNET.length*100}%"></i></div></div>`;
+  const cubes=CARNET.map(e=>S.vu[e.id]?`<svg class="cu on" width="28" height="28" style="color:${DATA.niveaux[e.niveau].c}"><use href="#i-cube"/></svg>`:`<svg class="cu" width="28" height="28"><use href="#i-cube-off"/></svg>`).join("");
+  h+=`<div class="meter"><strong aria-live="polite">${vus} sucre${vus>1?"s":""} collecté${vus>1?"s":""} sur ${CARNET.length}</strong><div class="cubes" aria-hidden="true">${cubes}</div><p class="mh2">Marquez un espace « vu » pour gagner son sucre, de la couleur de son niveau.</p></div>`;
   h+=`<div class="at-box" data-atbox-c="1"></div>`;
   h+=`<h3 class="sec">Mes espaces</h3>`;
   if(!list.length) h+=`<p>Aucun espace pour l’instant. Ajoutez-en depuis le plan, ou choisissez-en un ci-dessous.</p>`;
